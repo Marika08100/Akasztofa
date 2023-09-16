@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akasztófa Játék</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Akasztófa Játék</h1>
+    <div class="game-container">
+        <div class="word-display">
+            <tr th:each="word : ${gameWord}">
+                <td th:text="${word}"></td>
+        </div>
+        <div class="info">
+            <div class="attempts-left">Próbálkozások: <span id="counter"><p th:text="${counter}"></p></span></div>
+            <div class="used-characters">Használt karakterek: <span id="usedCharacters">
+                <tr th:each="word : ${usedWords}">
+            <td th:text="${word}"></td>
+            </span></div>
+        </div>
+        <form th:action="@{/guess}" method="post">
+            <input type="text" id="character" name="character" maxlength="1" placeholder="Tipp">
+            <button id="guessButton">Tippelés</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
